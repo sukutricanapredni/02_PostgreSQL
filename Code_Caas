@@ -1,0 +1,75 @@
+CREATE TABLE student(
+BrIndeks VARCHAR(5) PRIMARY KEY NOT NULL,
+Ime VARCHAR(15) NOT NULL,
+Prezime VARCHAR(20) NOT NULL,
+Komentar TEXT
+);
+
+DROP TABLE student
+
+INSERT INTO student VALUES('001','Veljko','Krstic');
+INSERT INTO student VALUES('002','Nikola','Mandic','Sve pohvale, odlicno prati nastavu');
+INSERT INTO student VALUES('003','Marinko','Slavic');
+INSERT INTO student VALUES('004','Emilija','Krstic','Ne radi nista');
+
+UPDATE student
+SET prezime='Slavuj'
+WHERE brindeks='003'
+
+
+/*
+Komentar
+*/
+
+SELECT * 
+FROM student
+ORDER BY brindeks DESC
+
+SELECT komentar as Komentari
+FROM student
+WHERE prezime='Krstic'
+
+SELECT *
+FROM student
+WHERE prezime LIKE 'K%ic'
+
+
+
+CREATE TABLE AUTOMOBILI(
+BRSASIJE VARCHAR(10) PRIMARY KEY NOT NULL,
+	PROIZVODJAC VARCHAR(15) NOT NULL,
+	MODEL VARCHAR(15) NOT NULL,
+	CENA INTEGER
+);
+
+
+INSERT INTO AUTOMOBILI VALUES ('12345','Mazda','Miata',5000);
+INSERT INTO AUTOMOBILI VALUES ('12346','BMW','520d',20000);
+INSERT INTO AUTOMOBILI VALUES ('12347','Audi','A4',25000);
+INSERT INTO AUTOMOBILI VALUES ('12348','Peugeot','408',30000);
+INSERT INTO AUTOMOBILI VALUES ('12349','Fiat','Grande Punto',3000);
+
+
+SELECT * FROM AUTOMOBILI
+
+/*
+1.Zadatak
+Prikazati sve autombile koji kostaju preko 10000
+
+2.Zadatak
+Prikazati sve autmobile ciji naziv proizvodjaca pocinje na M
+
+3.Zadatak
+Promeniti cenu automobilu fiat grande punto na null
+*/
+
+
+SELECT * FROM AUTOMOBILI
+WHERE CENA>10000
+
+SELECT * FROM AUTOMOBILI
+WHERE PROIZVODJAC LIKE 'M%'
+
+UPDATE AUTOMOBILI
+SET CENA=NULL
+WHERE PROIZVODJAC ='Fiat' AND MODEL='Grande Punto'
